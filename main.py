@@ -3,7 +3,7 @@ from lxml import html
 
 version = 0.1
 base = "https://fr.coflix.nu/"
-ascii = requests.get("https://paste.ee/r/ZhGGS").text
+ascii = requests.get("https://paste.ee/r/ZhGGS").text # This make the code shorter
 
 class Scraper:
     def __init__(self, query):
@@ -35,10 +35,6 @@ class Watch:
         video_urls = [base64.b64decode(element.split('\'')[1]).decode('utf-8') for element in onclick_elements]
         return video_urls
 
-def update_checker():
-    return True if version < float(requests.get("https://raw.githubusercontent.com/Vodkarm/PyFlix/main/actual.txt").text) else False
-
-
 def center(var:str, space:int=None):
     if not space:
         space = (os.get_terminal_size().columns - len(var.splitlines()[int(len(var.splitlines())/2)])) / 2
@@ -47,18 +43,6 @@ def center(var:str, space:int=None):
 
 def link(l):
     return True if requests.get(l).status_code == 200 else False
-
-def update():
-    os.system("cls && title PyFlix 0.1 - github.com/vodkarm/PyFlix")
-    print("\033[1;35;40m" + center(ascii) + "\033[m")
-    print("\n"*3)
-    print("[!] Welcome to the PyFlix Updates Manager")
-    print("[.] You're using a old version of PyFlix")
-    print("[.] We are going to replace this version by the new one.")
-    print("[!] Please note that the updater will run in background.")
-    input("\n[?] Please press enter to continue...")
-    subprocess.Popen(["python", "update.pyw"])
-    os._exit(0)
 
 def menu():
     os.system("cls && title PyFlix 0.1 - github.com/vodkarm/PyFlix")
@@ -86,4 +70,4 @@ def menu():
             continue
     menu()
 
-menu() if not update_checker() else update()
+menu()
