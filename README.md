@@ -1,3 +1,5 @@
+## ⚠️ NOT WORKING ANYMORE ⚠️
+
 # PyFlix 🎬
 
 PyFlix is a Python-based application that allows you to search for and watch french movies or series online. It provides a simple interface for browsing content and streaming videos.
